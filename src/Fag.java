@@ -71,7 +71,6 @@ public class Fag {
         return "Fag{" +
                 "fagnr=" + fagnr +
                 ", fagnavn='" + fagnavn + '\'' +
-                ", klasseListe=" + klasseListe +
                 '}';
     }
 }

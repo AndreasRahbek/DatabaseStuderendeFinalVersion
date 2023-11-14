@@ -68,4 +68,82 @@ public class DbSql {
             throwables.printStackTrace();
         }
     }
+    public void opretFag(int fagId,String fagNavn) {
+        try {
+            String sql = "insert into Fag(fagId,fagNavn) values(" + "'" + fagId + "','" + fagNavn + "');";
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            statement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void tildmeldStuderendeFag(int id, int stdnr, int fagid, int karakter) {
+        try {
+            String sql = "insert into StuderendeFag(id,stdnr,fagid,kar) values(" + "'" + id + "','" + stdnr + "','" + fagid + "','" + id + "');";
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            statement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void frameldStuderendeFag(int stdnr, int fagid) {
+        try {
+            String sql = "DELETE from StuderendeFag where StuderendeFag.stdnr =" + stdnr + " and StuderendeFag.fagid =" + fagid + ";";
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+            statement.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void alleStuderende(){
+        try {
+            String sql = "select * from Studerende";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                System.out.print(rs.getInt("stdnr"));
+                System.out.print(": ");
+                System.out.print(rs.getString("fnavn"));
+                System.out.print(" ");
+                System.out.print(rs.getString("enavn"));
+                System.out.print(", ");
+                System.out.print(rs.getString("adresse"));
+                System.out.print(", ");
+                System.out.print(rs.getString("postnr"));
+                System.out.print(", ");
+                System.out.print(rs.getString("mobil"));
+                System.out.print(", ");
+                System.out.print(rs.getString("klasse"));
+                System.out.println();
+            }
+            stmt.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+    public void alleFag(){
+        try {
+            String sql = "select * from Fag";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                System.out.print(rs.getInt("fagId"));
+                System.out.print(": ");
+                System.out.print(rs.getString("fagNavn"));
+                System.out.println();
+
+            }
+            stmt.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 }

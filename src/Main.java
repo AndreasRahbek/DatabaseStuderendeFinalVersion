@@ -18,40 +18,78 @@ public class Main {
 
         int valg = scanner.nextInt();
 
+        int id;
+        int stdnr;
+        int fagid;
+        int karakter;
+        String fnavn;
+        String enavn;
+        String adresse;
+        String postnr;
+        String mobil;
+        String klasse;
+
         switch (valg) {
             case 1:
                 System.out.println("Indtast stdnr, fnavn, enavn, adresse, postnr, mobil og klasse: ");
-                int stdnr = scanner.nextInt();
-                String fnavn = scanner.next();
-                String enavn = scanner.next();
-                String adresse = scanner.next();
-                adresse+=" " + scanner.next();
-                String postnr = scanner.next();
-                String mobil = scanner.next();
-                String klasse = scanner.next();
+                 stdnr = scanner.nextInt();
+                 fnavn = scanner.next();
+                 enavn = scanner.next();
+                 adresse = scanner.next();
+                 adresse+=" " + scanner.next();
+                 postnr = scanner.next();
+                 mobil = scanner.next();
+                 klasse = scanner.next();
+
                 db.opretStuderende(stdnr,fnavn,enavn,adresse,postnr,mobil,klasse);
                 System.out.println("Studerende oprettet!");
                 break;
 
             case 2:
-                
-
-
+                System.out.println("Indtast fagId og navn");
+                fagid = scanner.nextInt();
+                String fagNavn = scanner.next();
+                db.opretFag(fagid,fagNavn);
+                System.out.println("Fag er blevet oprettet!");
+                break;
 
             case 3:
+                System.out.println("Indtast id, stdnr, fagId og karakter: ");
+                id = scanner.nextInt();
+                stdnr = scanner.nextInt();
+                fagid = scanner.nextInt();
+                karakter = scanner.nextInt();
+                db.tildmeldStuderendeFag(id,stdnr,fagid,karakter);
+                System.out.println("Student tildmeldt fag!");
+                break;
 
             case 4:
+                System.out.println("Indtast stdnr og fagid");
+                stdnr = scanner.nextInt();
+                fagid = scanner.nextInt();
+                db.frameldStuderendeFag(stdnr,fagid);
+                System.out.println("Studerende frameldt fag!");
+                break;
 
             case 5:
+                System.out.println("Udskriver alle studerende: ");
+                db.alleStuderende();
+                break;
+
 
             case 6:
+                System.out.println("Udskriver alle fag: ");
+                db.alleFag();
+                break;
 
             case 7:
                 System.out.println("Indtast det stdnr du vil søge oplysninger om: ");
-                System.out.println(db.studerendeOplysninger(scanner.nextInt()));
+                stdnr = scanner.nextInt();
+                System.out.println(db.studerendeOplysninger(stdnr));
                 break;
 
             case 8:
+
 
         }
 

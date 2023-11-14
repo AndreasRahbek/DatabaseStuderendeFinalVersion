@@ -13,7 +13,6 @@ public class Main {
         System.out.println("5. Udskriv alle studerende");
         System.out.println("6. Udskriv alle fag");
         System.out.println("7. Søg oplysninger om en studerende");
-        System.out.println("8. Søg oplysninger om et fag");
         System.out.println("Indtast dit valg:");
 
         int valg = scanner.nextInt();
@@ -88,11 +87,7 @@ public class Main {
                 System.out.println(db.studerendeOplysninger(stdnr));
                 break;
 
-            case 8:
-
-
         }
-
 
     }
 
